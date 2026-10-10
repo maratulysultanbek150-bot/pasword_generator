@@ -12,10 +12,18 @@ PUNCTUATION = '!#$%&*+-=?@^_'
 char = ''    # Все символы указанные пользователем
 
 print('Количество паролей для генерации:')   
-counter = int(input())
+try:
+    counter = int(input())
+except ValueError:
+    print('Введите корректое число')
+    exit()
 
 print('Длинна одного пароля:')
-password_len = int(input())
+try:
+    password_len = int(input())
+except ValueError:
+    print('Введите корректное число')
+    exit()
 
 print('Включать ли цифры? (Да/Нет)')
 if input().strip().lower() == 'да':
@@ -33,5 +41,10 @@ print('Включать ли символы? (Да/Нет)')
 if input().strip().lower() == 'да':
     char += PUNCTUATION
 
-for i in range(counter):
+if char == '':
+    print('В пароле нет никаких символов, попробуй снова')
+    exit()
+    
+
+for _ in range(counter):
     print(gen_password(password_len, char))
