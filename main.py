@@ -14,34 +14,32 @@ UPPER_ALPHABET = "QWERTYUIOPASDFGHJKLZXCVBNM"
 PUNCTUATION = "!#$%&*+-=?@^_"
 char = ""  # Все символы указанные пользователем
 
-print("Количество паролей для генерации:")
 try:
-    counter = int(input())
+    counter = int(input("Количество паролей для генерации:"))
 except ValueError:
     print("Введите корректое число")
     exit()
 
-print("Длинна одного пароля:")
+
 try:
-    password_len = int(input())
+    password_len = int(input("Длинна одного пароля:"))
 except ValueError:
     print("Введите корректное число")
     exit()
 
-print("Включать ли цифры? (Да/Нет)")
-if input().strip().lower() == "да":
+if input("Включать ли цифры? (Да/Нет):").strip().lower() == "да":
     char += DIGITS
 
-print("Включать заглавные буквы? (Да/Нет)")
-if input().strip().lower() == "да":
+
+if input("Включать заглавные буквы? (Да/Нет):").strip().lower() == "да":
     char += UPPER_ALPHABET
 
-print("Включать ли строчные буквы? (Да/Нет)")
-if input().strip().lower() == "да":
+
+if input("Включать ли строчные буквы? (Да/Нет):").strip().lower() == "да":
     char += LOWER_ALPHABET
 
-print("Включать ли символы? (Да/Нет)")
-if input().strip().lower() == "да":
+
+if input("Включать ли символы? (Да/Нет):").strip().lower() == "да":
     char += PUNCTUATION
 
 if char == "":
@@ -49,5 +47,9 @@ if char == "":
     exit()
 
 
-for _ in range(counter):
-    print(gen_password(password_len, char))
+print("\n--- Твои сгенерированные пароли ---")
+
+for i in range(1, counter + 1):
+    # Тут твоя функция генерации одного пароля
+    password = gen_password(password_len, char)
+    print(f"  {i}.  {password}")
